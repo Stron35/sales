@@ -1,0 +1,51 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <title>Сайт скидок</title>
+    </head>
+    <body>
+
+        <div class="header">
+
+        </div>
+        <div class="main">
+            {% for sale in object_list %}
+            <div class="salecard">
+                <div class="content">
+                    <h2>{{ sale.name }}</h2>
+                    <img src="{{sale.image_link}}" alt="{{ sale.name }}">
+                    <p class="price_new">{{ sale.price_new }} &#8381;</p>
+                    <p class="price_old"> {{ sale.price_old }} &#x20bd;</p>
+                    <p class="link"><a href="{{sale.link}}">На сайт</a></p>
+                    <p class="date_sale">Актуально на <strong>{{sale.date_sale}}</strong></p>
+                </div>
+            </div>
+            {% endfor %}
+            {% if is_paginated %}
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <li>
+                        <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+                    </li>
+                {% endif %}
+                    <li>
+                        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                    </li>
+                {% if page_obj.has_next %}
+                    <li>
+                        <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+                    </li>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="footer">
+
+        </div>
+
+    </body>
+</html>

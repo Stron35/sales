@@ -1,0 +1,32 @@
+.salecard{
+    height: auto;
+    width: 500px;
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #555;
+    border-radius: 2px;
+}
+
+.salecard .content{
+    padding-left: 10px;
+}
+
+.salecard .content img {
+}
+
+.salecard .content p {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+
+}
+
+.salecard .content .price_new{
+    font-size: 2em;
+
+}
+
+.salecard .content .price_old{
+    text-decoration: line-through;
+    color: #c2d6d6;
+}

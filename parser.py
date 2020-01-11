@@ -7,8 +7,8 @@ from math import ceil
 def price_to_string(name_price, price):
     price_string = [string for string in price if name_price in string.lower()][0].split(': ')[1].split(' р')[0]
     if '\xa0' in price_string:
-        price_string = ''.join(price_string.split('\xa0'))
-    return price_string
+        price_string = (''.join(price_string.split('\xa0'))).replace(',','.')
+    return format(float(price_string),".2f")
 
 def write_csv(data):
     with open('data.csv', 'a') as file:
@@ -37,7 +37,7 @@ def get_data(html):
             title = ''
         print(title)
         title = title.split(', ')
-        name = title[0]
+        name = title[0].replace("'", "''")
         price = [string for string in title if 'цена' in string.lower()]
         try:
             price_new = price_to_string('текущая', price)
